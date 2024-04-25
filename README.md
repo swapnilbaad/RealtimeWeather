@@ -1,6 +1,6 @@
 # RealtimeWeather
 
-This projects Realtime Weather forecast upto 5 days.
+This project displays real-time weather forecast upto 5 days.
 
 ## Recommended IDE Setup
 
