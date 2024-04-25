@@ -69,7 +69,7 @@ export default {
     // Fetch weather data every 60 seconds
     this.interval = setInterval(() => {
       this.fetchWeatherData();
-    }, 15000);
+    }, 30000);
   },
   beforeDestroy() {
     clearInterval(this.interval); // Clear interval when component is destroyed
@@ -78,19 +78,7 @@ export default {
     async fetchWeatherData() {
       try {
         this.selectedCityData = this.cities.find(city => city.location === this.selectedCity);
-        this.selectedCityName = this.selectedCityData.name + ', ' + this.selectedCityData.region + ', ' + this.selectedCityData.country;
-        // const response = await axios.get('http://api.weatherapi.com/v1/forecast.json', {
-        //   params: {
-        //     key: 'f1d186f4cfd04717b3895913242304', // Replace with your WeatherAPI API key
-        //     q: this.selectedCity, // Replace with the location of the city
-        //     days: 5 // Get forecast for the next 5 days
-        //   }
-        // });
-        // this.selectedCityData.forecast = response.data.forecast;
-        // console.log('Weather data fetched at:', new Date());
-
-        // this.error = '';
-        // this.loading = true;
+        this.selectedCityName = this.selectedCityData.name + ', ' + this.selectedCityData.country;
         const response = await axios.get('http://localhost:3000/', {
           params: {
             location: this.selectedCity
@@ -98,7 +86,6 @@ export default {
         });
        
         this.selectedCityData.forecast = response.data.forecast;
-        //console.log(this.selectedCityData )
         console.log('Weather data fetched at:', new Date());
           
       } catch (error) {
